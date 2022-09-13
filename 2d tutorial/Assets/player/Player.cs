@@ -6,6 +6,21 @@ public class Player : MonoBehaviour
 {
     [SerializeField] GameObject _laserPrefab;
 
+    public int _health = 3;
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "healthkit")
+        {
+            if (_health < 3)
+            {
+                _health++;
+            }
+
+            Destroy(collision.gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
